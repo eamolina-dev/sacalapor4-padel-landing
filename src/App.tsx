@@ -1,41 +1,12 @@
 const links = {
-  reservas: "https://chat.whatsapp.com/ECksD7BEXk979SumJqgPMH?mode=r_c",
-  turnos: "https://alquilatucancha.com/sportclub/941",
+  appReservas: "https://alquilatucancha.com/sportclub/941",
+  whatsapp: "https://wa.me/543515502961",
   instagram: "https://www.instagram.com/sacala_x4?igsh=MWgzaGJ4N3Yzb216cA==",
   maps: "https://www.google.com/maps/search/?api=1&query=Av+Pueyrredon+2660,+Cordoba+Capital",
-  phone: "351 5502961",
+  phone: "3515502961",
 };
 
-const galleryImages = [
-  "WhatsApp Image 2026-03-24 at 4.09.03 PM.webp",
-  "WhatsApp Image 2026-03-24 at 4.09.03 PM (1).webp",
-  "WhatsApp Image 2026-03-24 at 6.50.37 PM.webp",
-  "WhatsApp Image 2026-03-25 at 8.32.42 AM.webp",
-  "WhatsApp Image 2026-03-25 at 8.33.09 AM.webp",
-  "WhatsApp Image 2026-03-25 at 8.34.13 AM.webp",
-  "WhatsApp Image 2026-03-25 at 8.34.53 AM.webp",
-  "WhatsApp Image 2026-03-25 at 8.36.08 AM.webp",
-];
-
-function SectionTitle({
-  label,
-  title,
-  description,
-}: {
-  label: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="mx-auto mb-8 max-w-2xl text-center md:mb-10">
-      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.32em] text-emerald-400">
-        {label}
-      </p>
-      <h2 className="text-3xl font-bold text-white md:text-4xl">{title}</h2>
-      <p className="mt-3 text-sm text-slate-300 md:text-base">{description}</p>
-    </div>
-  );
-}
+const sectionClass = "mx-auto max-w-6xl px-4 py-14 md:py-20";
 
 function LinkButton({
   href,
@@ -51,7 +22,7 @@ function LinkButton({
 
   const variantClass =
     variant === "primary"
-      ? "bg-emerald-500 text-slate-950 hover:bg-emerald-400"
+      ? "bg-emerald-400 text-slate-950 hover:bg-emerald-300"
       : "border border-slate-500 text-slate-100 hover:border-emerald-300 hover:text-emerald-300";
 
   return (
@@ -66,159 +37,194 @@ function LinkButton({
   );
 }
 
+function SectionTitle({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="mx-auto mb-8 max-w-2xl text-center md:mb-12">
+      <h2 className="text-3xl font-bold text-white md:text-4xl">{title}</h2>
+      <p className="mt-3 text-sm text-slate-300 md:text-base">{description}</p>
+    </div>
+  );
+}
+
 function App() {
   return (
     <main className="bg-slate-950 text-slate-100">
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.25),_transparent_55%)]" />
-        <div className="relative mx-auto grid max-w-6xl gap-8 px-4 py-14 md:grid-cols-2 md:items-center md:py-20">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-400">
-              Club de Pádel Sacala x4
+      <header className="sticky top-0 z-30 border-b border-slate-800/70 bg-slate-950/95 backdrop-blur">
+        <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-3">
+          <a href="#inicio" className="flex items-center gap-3">
+            <img
+              src="/sacalapor4-images/logo-image.jpeg"
+              alt="Sacala x4 logo"
+              className="h-11 w-11 rounded-full border border-slate-700 object-cover"
+            />
+            <span className="text-sm font-bold tracking-wide text-white md:text-base">
+              Sacala x 4
+            </span>
+          </a>
+
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-slate-200">
+            <a href={links.appReservas} target="_blank" rel="noreferrer" className="hover:text-emerald-300">
+              App de Reservas
+            </a>
+            <a href={links.whatsapp} target="_blank" rel="noreferrer" className="hover:text-emerald-300">
+              Turnos fijos
+            </a>
+            <a href="#ubicacion" className="hover:text-emerald-300">
+              Ubicación
+            </a>
+            <a href={links.instagram} target="_blank" rel="noreferrer" className="hover:text-emerald-300">
+              Instagram
+            </a>
+            <LinkButton href={links.whatsapp}>Agenda tu turno</LinkButton>
+          </div>
+        </nav>
+      </header>
+
+      <section id="inicio" className="relative min-h-[74vh] overflow-hidden">
+        <img
+          src="/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.47.21 AM.webp"
+          alt="Complejo Sacala x4"
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-slate-950/65" />
+        <div className="relative mx-auto flex min-h-[74vh] max-w-6xl items-center px-4 py-20">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
+              Complejo de pádel en Córdoba
             </p>
             <h1 className="mt-4 text-4xl font-black leading-tight text-white md:text-6xl">
-              Viví el pádel en Córdoba Capital
+              Sacala x 4: El corazón del pádel
             </h1>
-            <p className="mt-5 max-w-xl text-sm text-slate-300 md:text-base">
-              Nos encontramos en Av Pueyrredón 2660 y abrimos también los
-              domingos. Reservá rápido por WhatsApp y asegurá tu lugar.
+            <p className="mt-5 text-base text-slate-200 md:text-lg">
+              Cuatro canchas outdoor, eventos sociales y toda la energía del deporte en un espacio pensado para compartir.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <LinkButton href={links.reservas}>
-                Reservar por WhatsApp
-              </LinkButton>
-              <LinkButton href={links.turnos} variant="secondary">
-                Turnos disponibles
-              </LinkButton>
+            <div className="mt-8">
+              <LinkButton href={links.whatsapp}>Reservá por WhatsApp</LinkButton>
             </div>
           </div>
-
-          <img
-            src="/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.47.21 AM.webp"
-            alt="Complejo de pádel Sacala x4"
-            className="h-72 w-full rounded-2xl border border-slate-700 object-cover shadow-2xl md:h-[460px]"
-            loading="eager"
-          />
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-12 md:py-16">
+      <section className={sectionClass}>
         <SectionTitle
-          label="Sobre el complejo"
-          title="Un espacio pensado para jugar"
-          description="Sacala x4 combina canchas de pádel, ambiente deportivo y atención rápida para que disfrutes cada partido."
+          title="Instalaciones y servicios"
+          description="Todo lo que necesitás para jugar cómodo y quedarte después del partido."
         />
-        <div className="grid gap-4 md:grid-cols-3">
-          {[
-            "WhatsApp Image 2026-03-25 at 8.39.26 AM.webp",
-            "WhatsApp Image 2026-03-25 at 8.40.23 AM.webp",
-            "WhatsApp Image 2026-03-25 at 8.41.42 AM.webp",
-          ].map((image) => (
-            <img
-              key={image}
-              src={`/sacalapor4-images/${image}`}
-              alt="Instalaciones del complejo"
-              className="h-60 w-full rounded-xl border border-slate-800 object-cover"
-              loading="lazy"
-            />
-          ))}
-        </div>
-      </section>
 
-      <section className="border-y border-slate-800 bg-slate-900/30 py-12 md:py-16">
-        <div className="mx-auto grid max-w-6xl gap-6 px-4 md:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            {
-              title: "Canchas",
-              detail: "Consultá por cantidad disponible según día y horario.",
-            },
-            {
-              title: "Superficie y estructura",
-              detail:
-                "Canchas de pádel en un entorno moderno para entrenar y competir.",
-            },
-            {
-              title: "Turnos fijos",
-              detail: `Coordinación directa al ${links.phone}.`,
-            },
+            "4 canchas outdoor",
+            "Patio cervecero",
+            "Asador",
+            "Estacionamiento gratuito",
+            "Quincho para eventos sociales",
           ].map((item) => (
             <article
-              key={item.title}
-              className="rounded-2xl border border-slate-800 bg-slate-950 p-6"
+              key={item}
+              className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6"
             >
-              <h3 className="text-lg font-semibold text-emerald-300">
-                {item.title}
-              </h3>
-              <p className="mt-3 text-sm text-slate-300">{item.detail}</p>
+              <p className="text-lg font-semibold text-emerald-300">✓ {item}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-        <SectionTitle
-          label="Eventos"
-          title="Cumpleaños, torneos y encuentros privados"
-          description="Organizá tu evento en el club y coordiná formato, fechas y disponibilidad por WhatsApp."
-        />
-        <div className="grid gap-4 md:grid-cols-3">
-          {["Cumpleaños", "Torneos", "Eventos privados"].map((eventType) => (
-            <article
-              key={eventType}
-              className="rounded-2xl border border-slate-800 bg-slate-900/40 p-6"
-            >
-              <h3 className="text-xl font-semibold text-white">{eventType}</h3>
-              <p className="mt-2 text-sm text-slate-300">
-                Consultá opciones y armamos una propuesta para tu grupo.
-              </p>
-            </article>
-          ))}
+      <section className="border-y border-emerald-400/30 bg-emerald-500/10 py-14 md:py-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionTitle
+            title="Eventos"
+            description="Viví experiencias especiales en Sacala x 4, con formatos deportivos y sociales para cada ocasión."
+          />
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {[
+              "Torneos y ligas",
+              "Cumpleaños, bautismos, eventos corporativos",
+              "Turno gratis en cumpleaños",
+            ].map((event) => (
+              <article
+                key={event}
+                className="rounded-2xl border border-emerald-300/40 bg-slate-950/80 p-6"
+              >
+                <h3 className="text-xl font-bold text-white">{event}</h3>
+                <p className="mt-2 text-sm text-slate-300">
+                  Escribinos y organizamos cada detalle para tu fecha.
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-12 md:pb-16">
+      <section className={sectionClass}>
         <SectionTitle
-          label="Galería"
-          title="Así se vive Sacala x4"
-          description="Fotos reales del complejo en jornadas de juego."
+          title="Emprendimiento familiar"
+          description="Sacala x 4 es un proyecto familiar con atención personalizada. Cada jugador y cada grupo reciben un trato cercano para que se sientan como en casa."
         />
-        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
-          {galleryImages.map((image) => (
-            <img
-              key={image}
-              src={`/sacalapor4-images/${image}`}
-              alt="Galería del complejo"
-              className="h-44 w-full rounded-xl border border-slate-800 object-cover"
-              loading="lazy"
-            />
-          ))}
+      </section>
+
+      <section className="bg-slate-900/45 py-14 md:py-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionTitle
+            title="Comentarios de la comunidad"
+            description="Lo que más nos gusta: ver a la gente volver por la experiencia."
+          />
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              '"Excelente ambiente, canchas impecables y atención rápida por WhatsApp."',
+              '"Organizamos un cumpleaños y salió perfecto, súper recomendables."',
+              '"Muy cómodo el estacionamiento y el patio cervecero después de jugar."',
+              '"Se nota que es un emprendimiento familiar, siempre te reciben de diez."',
+            ].map((comment) => (
+              <article key={comment} className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                <p className="text-sm leading-relaxed text-slate-200">{comment}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="border-t border-slate-800 bg-slate-900/40">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-2 md:items-start md:py-16">
+      <section id="ubicacion" className="border-t border-slate-800 bg-slate-900/40 py-14 md:py-20">
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-2 md:items-start">
           <div>
-            <h2 className="text-3xl font-bold text-white">Ubicación</h2>
-            <p className="mt-3 text-slate-300">
-              Av Pueyrredón 2660, Córdoba Capital.
-            </p>
-            <p className="mt-2 text-sm text-slate-400">Abrimos los domingos.</p>
-            <div className="mt-6">
-              <LinkButton href={links.maps}>Ver mapa</LinkButton>
+            <h2 className="text-3xl font-bold text-white">Contacto y ubicación</h2>
+            <p className="mt-4 text-slate-300">Av. Pueyrredon 2660</p>
+            <p className="mt-2 text-slate-300">Teléfono: {links.phone}</p>
+            <div className="mt-7">
+              <a
+                href={links.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-full items-center justify-center rounded-full bg-emerald-400 px-6 py-4 text-base font-bold text-slate-950 transition hover:bg-emerald-300 sm:w-auto"
+              >
+                Escribinos por WhatsApp
+              </a>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-950 p-6">
-            <h3 className="text-xl font-semibold text-emerald-300">Contacto</h3>
-            <p className="mt-3 text-sm text-slate-300">
-              Respondemos rápido para reservas, turnos fijos y organización de
-              eventos.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <LinkButton href={links.reservas}>WhatsApp</LinkButton>
-              <LinkButton href={links.instagram} variant="secondary">
-                Instagram
-              </LinkButton>
+          <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+            <img
+              src="/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.59.21 AM.webp"
+              alt="Ubicación de Sacala x 4"
+              className="h-64 w-full object-cover"
+            />
+            <div className="p-5">
+              <a
+                href={links.maps}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-semibold text-emerald-300 hover:text-emerald-200"
+              >
+                Ver mapa en Google Maps →
+              </a>
             </div>
           </div>
         </div>
