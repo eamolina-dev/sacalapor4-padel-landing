@@ -38,7 +38,8 @@ const comments = [
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navLinkClass = "text-sm font-medium text-white/90 transition hover:text-white";
+  const navLinkClass =
+    "text-sm font-medium text-white/90 transition hover:text-white";
 
   return (
     <header className="absolute inset-x-0 top-0 z-40">
@@ -49,7 +50,9 @@ function Navbar() {
             alt="Sacala x4 logo"
             className="h-11 w-11 rounded-full border border-white/40 object-cover"
           />
-          <span className="text-sm font-bold tracking-wide text-white md:text-base">Sacala x 4</span>
+          <span className="text-sm font-bold tracking-wide text-white md:text-base">
+            Sacala x 4
+          </span>
         </a>
 
         <button
@@ -63,16 +66,31 @@ function Navbar() {
         </button>
 
         <div className="hidden items-center gap-6 md:flex">
-          <a href={links.appReservas} target="_blank" rel="noreferrer" className={navLinkClass}>
+          <a
+            href={links.appReservas}
+            target="_blank"
+            rel="noreferrer"
+            className={navLinkClass}
+          >
             App de Reservas
           </a>
-          <a href={links.whatsapp} target="_blank" rel="noreferrer" className={navLinkClass}>
+          <a
+            href={links.whatsapp}
+            target="_blank"
+            rel="noreferrer"
+            className={navLinkClass}
+          >
             Turnos fijos
           </a>
           <a href="#ubicacion" className={navLinkClass}>
             Ubicación
           </a>
-          <a href={links.instagram} target="_blank" rel="noreferrer" className={navLinkClass}>
+          <a
+            href={links.instagram}
+            target="_blank"
+            rel="noreferrer"
+            className={navLinkClass}
+          >
             Instagram
           </a>
           <a
@@ -89,16 +107,31 @@ function Navbar() {
       {menuOpen && (
         <div className="mx-4 rounded-2xl border border-white/20 bg-slate-900/95 p-4 text-white md:hidden">
           <div className="flex flex-col gap-3">
-            <a href={links.appReservas} target="_blank" rel="noreferrer" className={navLinkClass}>
+            <a
+              href={links.appReservas}
+              target="_blank"
+              rel="noreferrer"
+              className={navLinkClass}
+            >
               App de Reservas
             </a>
-            <a href={links.whatsapp} target="_blank" rel="noreferrer" className={navLinkClass}>
+            <a
+              href={links.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className={navLinkClass}
+            >
               Turnos fijos
             </a>
             <a href="#ubicacion" className={navLinkClass}>
               Ubicación
             </a>
-            <a href={links.instagram} target="_blank" rel="noreferrer" className={navLinkClass}>
+            <a
+              href={links.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className={navLinkClass}
+            >
               Instagram
             </a>
             <a
@@ -118,9 +151,12 @@ function Navbar() {
 
 function HeroSection() {
   return (
-    <section id="inicio" className="relative min-h-[50vh] overflow-hidden md:min-h-[54vh]">
+    <section
+      id="inicio"
+      className="relative min-h-[50vh] overflow-hidden md:min-h-[54vh]"
+    >
       <img
-        src="/sacalapor4-images/horizontal-image.webp"
+        src="/sacalapor4-images/horizontal-image-v2.webp"
         alt="Complejo Sacala x4"
         className="absolute inset-0 h-full w-full object-cover object-center"
         loading="eager"
@@ -129,18 +165,30 @@ function HeroSection() {
 
       <div className="relative mx-auto flex min-h-[50vh] max-w-6xl items-end px-4 pb-10 pt-24 md:min-h-[54vh] md:pb-12 md:pt-28">
         <div className="max-w-2xl">
-          <h1 className="text-4xl font-black leading-tight text-white md:text-6xl">Sacala x 4</h1>
-          <p className="mt-3 text-lg font-medium text-slate-100 md:text-2xl">El corazón del pádel</p>
+          <h1 className="text-4xl font-black leading-tight text-white md:text-6xl">
+            Sacala x 4
+          </h1>
+          <p className="mt-3 text-lg font-medium text-slate-100 md:text-2xl">
+            El corazón del pádel
+          </p>
         </div>
       </div>
     </section>
   );
 }
 
-function SectionBlock({ title, children }: { title: string; children: ReactNode }) {
+function SectionBlock({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
-      <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">{title}</h2>
+      <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">
+        {title}
+      </h2>
       <div className="mt-5">{children}</div>
     </section>
   );
@@ -182,10 +230,12 @@ function ContactCard() {
       </a>
       <div className="mt-5 space-y-2 text-sm text-slate-700">
         <p>
-          <span className="font-semibold text-slate-900">Dirección:</span> Av. Pueyrredon 2660
+          <span className="font-semibold text-slate-900">Dirección:</span> Av.
+          Pueyrredon 2660
         </p>
         <p>
-          <span className="font-semibold text-slate-900">Teléfono:</span> {links.phone}
+          <span className="font-semibold text-slate-900">Teléfono:</span>{" "}
+          {links.phone}
         </p>
       </div>
     </div>
@@ -273,7 +323,9 @@ function MainLayout() {
           </SectionBlock>
 
           <SectionBlock title="Sobre nosotros">
-            <p className="text-base text-slate-700">Emprendimiento familiar - Atención personalizada</p>
+            <p className="text-base text-slate-700">
+              Emprendimiento familiar - Atención personalizada
+            </p>
           </SectionBlock>
 
           <SectionBlock title="Comentarios">
@@ -286,7 +338,9 @@ function MainLayout() {
 
           <SectionBlock title="Información de contacto">
             <div id="ubicacion" className="space-y-2 text-slate-700">
-              <p className="font-semibold text-slate-900">Sacala x 4: El corazón del pádel</p>
+              <p className="font-semibold text-slate-900">
+                Sacala x 4: El corazón del pádel
+              </p>
               <p>Dirección: Av. Pueyrredon 2660</p>
               <p>Teléfono: {links.phone}</p>
               <a
