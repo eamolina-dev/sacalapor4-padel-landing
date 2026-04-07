@@ -22,6 +22,13 @@ const eventItems = [
   "Turnos gratis por tu cumpleaños",
 ];
 
+const galleryImages = [
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.32.42 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.48.29 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.59.21 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.00.32 AM.webp",
+];
+
 const comments = [
   "Excelente ambiente, canchas impecables y atención rápida por WhatsApp.",
   "Organizamos un cumpleaños y salió perfecto, súper recomendables.",
@@ -111,16 +118,16 @@ function Navbar() {
 
 function HeroSection() {
   return (
-    <section id="inicio" className="relative min-h-[66vh] overflow-hidden">
+    <section id="inicio" className="relative min-h-[50vh] overflow-hidden md:min-h-[54vh]">
       <img
         src="/sacalapor4-images/horizontal-image.webp"
         alt="Complejo Sacala x4"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-center"
         loading="eager"
       />
       <div className="absolute inset-0 bg-slate-900/35" />
 
-      <div className="relative mx-auto flex min-h-[66vh] max-w-6xl items-end px-4 pb-16 pt-28 md:pb-20 md:pt-32">
+      <div className="relative mx-auto flex min-h-[50vh] max-w-6xl items-end px-4 pb-10 pt-24 md:min-h-[54vh] md:pb-12 md:pt-28">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-black leading-tight text-white md:text-6xl">Sacala x 4</h1>
           <p className="mt-3 text-lg font-medium text-slate-100 md:text-2xl">El corazón del pádel</p>
@@ -195,6 +202,27 @@ function Sidebar() {
           className="h-auto w-full object-contain"
         />
       </div>
+
+      <a
+        href={links.maps}
+        target="_blank"
+        rel="noreferrer"
+        className="group block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+      >
+        <div className="aspect-square w-full">
+          <iframe
+            title="Mapa de Sacala x 4"
+            src="https://maps.google.com/maps?q=Av.%20Pueyrredon%202660%20Cordoba&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            className="h-full w-full"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+        <p className="px-4 py-3 text-center text-sm font-semibold text-[#1d7d47] transition group-hover:text-[#24b35e]">
+          Ver ubicación en Google Maps
+        </p>
+      </a>
+
       <ContactCard />
     </aside>
   );
@@ -205,6 +233,37 @@ function MainLayout() {
     <section className="bg-slate-100 py-10 md:py-14">
       <div className="mx-auto grid max-w-6xl gap-6 px-4 lg:grid-cols-10">
         <div className="space-y-6 lg:col-span-7">
+          <SectionBlock title="Fotos">
+            <div className="space-y-4">
+              <div className="grid gap-3 sm:grid-cols-2">
+                {galleryImages.map((image, index) => (
+                  <a
+                    key={image}
+                    href={links.instagram}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="overflow-hidden rounded-xl border border-slate-200"
+                  >
+                    <img
+                      src={image}
+                      alt={`Foto de Sacala x 4 ${index + 1}`}
+                      className="h-40 w-full object-cover transition duration-300 hover:scale-105"
+                      loading="lazy"
+                    />
+                  </a>
+                ))}
+              </div>
+              <a
+                href={links.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex rounded-full bg-[#24b35e] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1e9b50]"
+              >
+                Ver todas las imágenes
+              </a>
+            </div>
+          </SectionBlock>
+
           <SectionBlock title="Instalaciones y Servicios">
             <BadgeList items={facilityItems} />
           </SectionBlock>
