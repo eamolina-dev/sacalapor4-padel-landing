@@ -1,514 +1,99 @@
-import { type ReactNode, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { Navbar } from "./components/Navbar";
+import { GalleryPage } from "./pages/GalleryPage";
+import { HomePage } from "./pages/HomePage";
+import { LocationPage } from "./pages/LocationPage";
+import { routes, type PageType } from "./data/content";
 
-const links = {
-  appReservas: "https://alquilatucancha.com/sportclub/941",
-  whatsapp: "https://wa.me/543515502961",
-  instagram: "https://www.instagram.com/sacala_x4?igsh=MWgzaGJ4N3Yzb216cA==",
-  maps: "https://www.google.com/maps/search/?api=1&query=Av+Pueyrredon+2660,+Cordoba+Capital",
-  phone: "3515502961",
-};
-
-const facilityItems = [
-  "4 canchas outdoor",
-  "Patio cervecero",
-  "Asador",
-  "Estacionamiento gratuito",
-  "Quincho para eventos sociales",
-];
-
-const eventItems = [
-  "Torneos y Ligas",
-  "Cumples, bautismos, fiestas corporativas",
-  "Turnos gratis por tu cumpleaños",
-];
-
-const galleryImages = [
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.32.42 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.48.29 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.59.21 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.00.32 AM.webp",
-];
-
-const fullGalleryImages = [
-  "/sacalapor4-images/horizontal-image.webp",
-  "/sacalapor4-images/horizontal-image-v2.webp",
-  "/sacalapor4-images/mother-and-son-image.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-24 at 4.09.03 PM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-24 at 4.09.03 PM (1).webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.32.42 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.33.09 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.34.13 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.34.53 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.36.08 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.37.19 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.38.04 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.39.26 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.40.23 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.47.21 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.48.29 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.48.54 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.49.50 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.50.40 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.51.16 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.51.43 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.52.07 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.52.30 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.54.50 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.55.27 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.56.06 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.57.01 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.58.34 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.59.21 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.00.32 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.02.34 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.03.03 AM.webp",
-  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.14.08 AM.webp",
-];
-
-const comments = [
-  "Excelente ambiente, canchas impecables y atención rápida por WhatsApp.",
-  "Organizamos un cumpleaños y salió perfecto, súper recomendables.",
-  "Muy cómodo el estacionamiento y el patio cervecero después de jugar.",
-  "Se nota que es un emprendimiento familiar, siempre te reciben de diez.",
-];
-
-type PageType = "home" | "gallery" | "location";
-
-function getPage(pathname: string): PageType {
-  if (pathname === "/imagenes") {
+function getPageFromPath(pathname: string): PageType {
+  if (pathname === routes.gallery) {
     return "gallery";
   }
-  if (pathname === "/ubicacion") {
+
+  if (pathname === routes.location) {
     return "location";
   }
+
   return "home";
 }
 
-function Navbar({ compact = false }: { compact?: boolean }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const navLinkClass =
-    "text-sm font-medium text-white/90 transition hover:text-white";
+function shouldHandleAsSpaNavigation(anchor: HTMLAnchorElement): boolean {
+  const href = anchor.getAttribute("href");
+  if (!href || href.startsWith("#")) {
+    return false;
+  }
 
-  return (
-    <header
-      className={compact ? "sticky inset-x-0 top-0 z-40 bg-slate-950/95 backdrop-blur" : "absolute inset-x-0 top-0 z-40"}
-    >
-      <nav
-        className={`mx-auto flex max-w-6xl items-center justify-between px-4 ${compact ? "py-3 md:py-4" : "py-4 md:py-6"}`}
-      >
-        <a href="/" className="flex items-center gap-3">
-          <img
-            src="/sacalapor4-images/logo-image.jpeg"
-            alt="Sacala x4 logo"
-            className="h-11 w-11 rounded-full border border-white/40 object-cover"
-          />
-          <span className="text-sm font-bold tracking-wide text-white md:text-base">
-            Sacala x 4
-          </span>
-        </a>
+  if (anchor.target === "_blank" || anchor.hasAttribute("download")) {
+    return false;
+  }
 
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white md:hidden"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Abrir menú"
-          aria-expanded={menuOpen}
-        >
-          <span className="text-lg">☰</span>
-        </button>
+  const url = new URL(anchor.href, window.location.origin);
+  if (url.origin !== window.location.origin) {
+    return false;
+  }
 
-        <div className="hidden items-center gap-6 md:flex">
-          <a
-            href={links.appReservas}
-            target="_blank"
-            rel="noreferrer"
-            className={navLinkClass}
-          >
-            App de Reservas
-          </a>
-          <a
-            href={links.whatsapp}
-            target="_blank"
-            rel="noreferrer"
-            className={navLinkClass}
-          >
-            Turnos fijos
-          </a>
-          <a href="/ubicacion" className={navLinkClass}>
-            Ubicación
-          </a>
-          <a
-            href={links.instagram}
-            target="_blank"
-            rel="noreferrer"
-            className={navLinkClass}
-          >
-            Instagram
-          </a>
-          <a
-            href={links.whatsapp}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-full bg-[#24b35e] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#24b35e]/30 transition hover:bg-[#1e9b50]"
-          >
-            Agenda tu turno
-          </a>
-        </div>
-      </nav>
-
-      {menuOpen && (
-        <div className="mx-4 rounded-2xl border border-white/20 bg-slate-900/95 p-4 text-white md:hidden">
-          <div className="flex flex-col gap-3">
-            <a
-              href={links.appReservas}
-              target="_blank"
-              rel="noreferrer"
-              className={navLinkClass}
-            >
-              App de Reservas
-            </a>
-            <a
-              href={links.whatsapp}
-              target="_blank"
-              rel="noreferrer"
-              className={navLinkClass}
-            >
-              Turnos fijos
-            </a>
-            <a href="/ubicacion" className={navLinkClass}>
-              Ubicación
-            </a>
-            <a
-              href={links.instagram}
-              target="_blank"
-              rel="noreferrer"
-              className={navLinkClass}
-            >
-              Instagram
-            </a>
-            <a
-              href={links.whatsapp}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-1 inline-flex items-center justify-center rounded-full bg-[#24b35e] px-5 py-2.5 text-sm font-semibold text-white"
-            >
-              Agenda tu turno
-            </a>
-          </div>
-        </div>
-      )}
-    </header>
-  );
-}
-
-function HeroSection() {
-  return (
-    <section
-      id="inicio"
-      className="relative min-h-[50vh] overflow-hidden md:min-h-[54vh]"
-    >
-      <img
-        src="/sacalapor4-images/horizontal-image-v2.webp"
-        alt="Complejo Sacala x4"
-        className="absolute inset-0 h-full w-full object-cover object-center"
-        loading="eager"
-      />
-      <div className="absolute inset-0 bg-slate-900/35" />
-
-      <div className="relative mx-auto flex min-h-[50vh] max-w-6xl items-end px-4 pb-10 pt-24 md:min-h-[54vh] md:pb-12 md:pt-28">
-        <div className="max-w-2xl">
-          <h1 className="text-4xl font-black leading-tight text-white md:text-6xl">
-            Sacala x 4
-          </h1>
-          <p className="mt-3 text-lg font-medium text-slate-100 md:text-2xl">
-            El corazón del pádel
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SectionBlock({
-  title,
-  children,
-}: {
-  title: string;
-  children: ReactNode;
-}) {
-  return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
-      <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">
-        {title}
-      </h2>
-      <div className="mt-5">{children}</div>
-    </section>
-  );
-}
-
-function BadgeList({ items }: { items: string[] }) {
-  return (
-    <ul className="flex flex-wrap gap-3">
-      {items.map((item) => (
-        <li
-          key={item}
-          className="rounded-full border border-[#24b35e]/25 bg-[#24b35e]/10 px-4 py-2 text-sm font-semibold text-[#1d7d47]"
-        >
-          {item}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function ReviewCard({ text }: { text: string }) {
-  return (
-    <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-      <p className="text-sm leading-relaxed text-slate-700">“{text}”</p>
-    </article>
-  );
-}
-
-function ContactCard() {
-  return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-      <a
-        href={links.whatsapp}
-        target="_blank"
-        rel="noreferrer"
-        className="inline-flex w-full items-center justify-center rounded-full bg-[#24b35e] px-5 py-3 text-sm font-bold text-white shadow-md shadow-[#24b35e]/30 transition hover:bg-[#1e9b50]"
-      >
-        Agenda tu turno por WhatsApp
-      </a>
-      <div className="mt-5 space-y-2 text-sm text-slate-700">
-        <p>
-          <span className="font-semibold text-slate-900">Dirección:</span> Av.
-          Pueyrredon 2660
-        </p>
-        <p>
-          <span className="font-semibold text-slate-900">Teléfono:</span>{" "}
-          {links.phone}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function Sidebar() {
-  return (
-    <aside className="space-y-5 lg:sticky lg:top-6 lg:self-start">
-      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-        <img
-          src="/sacalapor4-images/mother-and-son-image.webp"
-          alt="Familia en Sacala x 4"
-          className="h-auto w-full object-contain"
-        />
-      </div>
-
-      <a
-        href={links.maps}
-        target="_blank"
-        rel="noreferrer"
-        className="group block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
-      >
-        <div className="aspect-square w-full">
-          <iframe
-            title="Mapa de Sacala x 4"
-            src="https://maps.google.com/maps?q=Av.%20Pueyrredon%202660%20Cordoba&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            className="h-full w-full"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-        <p className="px-4 py-3 text-center text-sm font-semibold text-[#1d7d47] transition group-hover:text-[#24b35e]">
-          Ver ubicación en Google Maps
-        </p>
-      </a>
-
-      <ContactCard />
-    </aside>
-  );
-}
-
-function MainLayout() {
-  return (
-    <section className="bg-slate-100 py-10 md:py-14">
-      <div className="mx-auto grid max-w-6xl gap-6 px-4 lg:grid-cols-10">
-        <div className="space-y-6 lg:col-span-7">
-          <SectionBlock title="Fotos">
-            <div className="space-y-4">
-              <div className="grid gap-3 sm:grid-cols-2">
-                {galleryImages.map((image, index) => (
-                  <a
-                    key={image}
-                    href={links.instagram}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="overflow-hidden rounded-xl border border-slate-200"
-                  >
-                    <img
-                      src={image}
-                      alt={`Foto de Sacala x 4 ${index + 1}`}
-                      className="h-40 w-full object-cover transition duration-300 hover:scale-105"
-                      loading="lazy"
-                    />
-                  </a>
-                ))}
-              </div>
-              <a
-                href="/imagenes"
-                className="inline-flex rounded-full bg-[#24b35e] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1e9b50]"
-              >
-                Ver todas las imágenes
-              </a>
-            </div>
-          </SectionBlock>
-
-          <SectionBlock title="Instalaciones y Servicios">
-            <BadgeList items={facilityItems} />
-          </SectionBlock>
-
-          <SectionBlock title="Eventos deportivos y sociales">
-            <BadgeList items={eventItems} />
-          </SectionBlock>
-
-          <SectionBlock title="Sobre nosotros">
-            <p className="text-base text-slate-700">
-              Emprendimiento familiar - Atención personalizada
-            </p>
-          </SectionBlock>
-
-          <SectionBlock title="Comentarios">
-            <div className="grid gap-3 sm:grid-cols-2">
-              {comments.map((comment) => (
-                <ReviewCard key={comment} text={comment} />
-              ))}
-            </div>
-          </SectionBlock>
-
-          <SectionBlock title="Información de contacto">
-            <div id="ubicacion" className="space-y-2 text-slate-700">
-              <p className="font-semibold text-slate-900">
-                Sacala x 4: El corazón del pádel
-              </p>
-              <p>Dirección: Av. Pueyrredon 2660</p>
-              <p>Teléfono: {links.phone}</p>
-              <a
-                href={links.maps}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex pt-2 text-sm font-semibold text-[#1d7d47] hover:text-[#24b35e]"
-              >
-                Ver en Google Maps →
-              </a>
-            </div>
-          </SectionBlock>
-        </div>
-
-        <div className="lg:col-span-3">
-          <Sidebar />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function GalleryPage() {
-  return (
-    <section className="bg-slate-100 pb-10 pt-24 md:pb-14 md:pt-28">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
-          <h1 className="text-2xl font-black text-slate-900 md:text-3xl">
-            Galería completa
-          </h1>
-          <p className="mt-2 text-sm text-slate-600 md:text-base">
-            Todas las imágenes disponibles del complejo Sacala x 4.
-          </p>
-        </div>
-
-        <div className="columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3">
-          {fullGalleryImages.map((image, index) => (
-            <figure
-              key={image}
-              className="break-inside-avoid overflow-hidden rounded-xl border border-slate-200 bg-white"
-            >
-              <img
-                src={image}
-                alt={`Imagen de Sacala x 4 ${index + 1}`}
-                className="h-auto w-full object-cover"
-                loading="lazy"
-              />
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function LocationPage() {
-  return (
-    <section className="bg-slate-100 pb-10 pt-24 md:pb-14 md:pt-28">
-      <div className="mx-auto max-w-5xl px-4">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 text-center md:p-8">
-          <h1 className="text-2xl font-black text-slate-900 md:text-3xl">
-            Ubicación
-          </h1>
-          <p className="mt-3 text-base text-slate-700">
-            Av. Pueyrredon 2660, Córdoba Capital
-          </p>
-          <a
-            href={links.maps}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 inline-flex rounded-full bg-[#24b35e] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1e9b50]"
-          >
-            Abrir en Google Maps
-          </a>
-        </div>
-
-        <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-          <div className="aspect-[16/10] w-full">
-            <iframe
-              title="Mapa centrado de Sacala x 4"
-              src="https://maps.google.com/maps?q=Av.%20Pueyrredon%202660%20Cordoba&t=&z=16&ie=UTF8&iwloc=&output=embed"
-              className="h-full w-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return [routes.home, routes.gallery, routes.location].includes(url.pathname);
 }
 
 function App() {
-  const page = useMemo(() => getPage(window.location.pathname), []);
+  const [page, setPage] = useState<PageType>(() =>
+    getPageFromPath(window.location.pathname),
+  );
 
-  if (page === "gallery") {
-    return (
-      <main className="min-h-screen bg-white text-slate-800">
-        <Navbar compact />
-        <GalleryPage />
-      </main>
-    );
-  }
+  const navigateToCurrentPath = useCallback(() => {
+    setPage(getPageFromPath(window.location.pathname));
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
 
-  if (page === "location") {
-    return (
-      <main className="min-h-screen bg-white text-slate-800">
-        <Navbar compact />
-        <LocationPage />
-      </main>
-    );
-  }
+  useEffect(() => {
+    const handlePopState = () => {
+      navigateToCurrentPath();
+    };
+
+    const handleDocumentClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0) {
+        return;
+      }
+
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+
+      const target = event.target as HTMLElement | null;
+      const anchor = target?.closest("a");
+
+      if (!anchor || !shouldHandleAsSpaNavigation(anchor)) {
+        return;
+      }
+
+      event.preventDefault();
+      const nextUrl = new URL(anchor.href, window.location.origin);
+
+      if (nextUrl.pathname !== window.location.pathname) {
+        window.history.pushState({}, "", nextUrl.pathname);
+      }
+
+      navigateToCurrentPath();
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, [navigateToCurrentPath]);
+
+  const isCompactNav = page !== "home";
 
   return (
     <main className="min-h-screen bg-white text-slate-800">
-      <Navbar />
-      <HeroSection />
-      <MainLayout />
+      <Navbar compact={isCompactNav} currentPage={page} />
+
+      {page === "home" && <HomePage />}
+      {page === "gallery" && <GalleryPage />}
+      {page === "location" && <LocationPage />}
     </main>
   );
 }
