@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { Navbar } from "./components/Navbar";
-import { GalleryPage } from "./pages/GalleryPage";
-import { HomePage } from "./pages/HomePage";
-import { LocationPage } from "./pages/LocationPage";
 import { routes, type PageType } from "./data/content";
+import { Gallery } from "./pages/Gallery";
+import { Home } from "./pages/Home";
+import { Location } from "./pages/Location";
 
 function getPageFromPath(pathname: string): PageType {
   if (pathname === routes.gallery) {
@@ -42,7 +42,17 @@ function App() {
 
   const navigateToCurrentPath = useCallback(() => {
     setPage(getPageFromPath(window.location.pathname));
-    window.scrollTo({ top: 0, behavior: "auto" });
+
+    requestAnimationFrame(() => {
+      if (window.location.hash) {
+        const sectionId = window.location.hash.replace("#", "");
+        const target = document.getElementById(sectionId);
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      window.scrollTo({ top: 0, behavior: "auto" });
+    });
   }, []);
 
   useEffect(() => {
@@ -68,9 +78,11 @@ function App() {
 
       event.preventDefault();
       const nextUrl = new URL(anchor.href, window.location.origin);
+      const nextPathWithHash = `${nextUrl.pathname}${nextUrl.hash}`;
+      const currentPathWithHash = `${window.location.pathname}${window.location.hash}`;
 
-      if (nextUrl.pathname !== window.location.pathname) {
-        window.history.pushState({}, "", nextUrl.pathname);
+      if (nextPathWithHash !== currentPathWithHash) {
+        window.history.pushState({}, "", nextPathWithHash);
       }
 
       navigateToCurrentPath();
@@ -85,15 +97,13 @@ function App() {
     };
   }, [navigateToCurrentPath]);
 
-  const isCompactNav = page !== "home";
-
   return (
-    <main className="min-h-screen bg-white text-slate-800">
-      <Navbar compact={isCompactNav} currentPage={page} />
+    <main className="min-h-screen bg-[#102a43] text-slate-800">
+      <Navbar currentPage={page} />
 
-      {page === "home" && <HomePage />}
-      {page === "gallery" && <GalleryPage />}
-      {page === "location" && <LocationPage />}
+      {page === "home" && <Home />}
+      {page === "gallery" && <Gallery />}
+      {page === "location" && <Location />}
     </main>
   );
 }

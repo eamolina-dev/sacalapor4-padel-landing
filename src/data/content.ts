@@ -16,9 +16,11 @@ export const links = {
 
 export const navigationItems = [
   { label: "App de Reservas", href: links.appReservas, external: true },
-  { label: "Turnos fijos", href: links.whatsapp, external: true },
-  { label: "Ubicación", href: routes.location, external: false },
   { label: "Instagram", href: links.instagram, external: true },
+  { label: "Ubicación", href: routes.location, external: false },
+  { label: "Instalaciones", href: "#instalaciones", external: false },
+  { label: "Eventos", href: "#eventos", external: false },
+  { label: "Sobre nosotros", href: "#nosotros", external: false },
 ] as const;
 
 export const facilityItems = [
@@ -35,12 +37,40 @@ export const eventItems = [
   "Turnos gratis por tu cumpleaños",
 ] as const;
 
+export const aboutItems = [
+  "Emprendimiento familiar",
+  "Atención personalizada",
+  "Sacala x 4: El corazón del pádel",
+  "Comunidad activa durante todo el año",
+] as const;
+
 export const galleryPreviewImages = [
   "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.32.42 AM.webp",
   "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.48.29 AM.webp",
   "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.59.21 AM.webp",
   "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.00.32 AM.webp",
 ] as const;
+
+export const sectionImages = {
+  instalaciones: [
+    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.37.19 AM.webp",
+    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.47.21 AM.webp",
+    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.50.40 AM.webp",
+    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.55.27 AM.webp",
+  ],
+  eventos: [
+    "/sacalapor4-images/WhatsApp Image 2026-03-24 at 4.09.03 PM.webp",
+    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.57.01 AM.webp",
+    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.58.34 AM.webp",
+    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.03.03 AM.webp",
+  ],
+  nosotros: [
+    "/sacalapor4-images/mother-and-son-image.webp",
+    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.36.08 AM.webp",
+    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.39.26 AM.webp",
+    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.14.08 AM.webp",
+  ],
+} as const;
 
 export const fullGalleryImages = [
   "/sacalapor4-images/mother-and-son-image.webp",
@@ -84,8 +114,6 @@ export const comments = [
 ] as const;
 
 export const mapEmbedLinks = {
-  sidebar:
-    "https://maps.google.com/maps?q=Av.%20Pueyrredon%202660%20Cordoba&t=&z=15&ie=UTF8&iwloc=&output=embed",
   centered:
     "https://maps.google.com/maps?q=Av.%20Pueyrredon%202660%20Cordoba&t=&z=16&ie=UTF8&iwloc=&output=embed",
 } as const;
