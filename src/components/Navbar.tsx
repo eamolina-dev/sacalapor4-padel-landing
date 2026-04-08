@@ -11,7 +11,7 @@ export function Navbar({ currentPage }: NavbarProps) {
   const [mobileEventsOpen, setMobileEventsOpen] = useState(false);
 
   const navClass =
-    "text-lg font-semibold text-white/90 transition duration-200 hover:text-white";
+    "text-2xl font-bold tracking-wide text-white/90 transition duration-200 hover:text-white";
 
   const resolvedItems = navigationItems.map((item) => {
     if (currentPage !== "home" && item.href.startsWith("#")) {
@@ -34,7 +34,7 @@ export function Navbar({ currentPage }: NavbarProps) {
 
   return (
     <header className="sticky inset-x-0 top-0 z-50 border-b border-white/15 bg-slate-950/75 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4">
         <a href={routes.home} className="flex items-center gap-3">
           <img
             src="/sacalapor4-images/logo-image.jpeg"
@@ -54,7 +54,7 @@ export function Navbar({ currentPage }: NavbarProps) {
           <span className="text-xl">☰</span>
         </button>
 
-        <div className="hidden items-center gap-6 min-[1100px]:flex">
+        <div className="hidden flex-1 items-center justify-evenly gap-6 text-center min-[1100px]:flex">
           {resolvedItems.slice(0, 2).map((item) => {
             const isActive = !item.external && item.href === routes[currentPage];
 

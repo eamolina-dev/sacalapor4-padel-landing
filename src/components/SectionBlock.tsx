@@ -15,12 +15,12 @@ export function SectionBlock({ id, title, items, images, children }: SectionBloc
       id={id}
       className="scroll-mt-28 rounded-3xl bg-white p-6 shadow-xl shadow-slate-900/10 sm:p-8 md:p-10"
     >
-      <h2 className="text-2xl font-black text-slate-900 sm:text-3xl">{title}</h2>
+      <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">{title}</h2>
       <ul className="mt-6 flex flex-wrap gap-3">
         {items.map((item) => (
           <li
             key={item}
-            className="rounded-full border border-[#24b35e]/35 bg-[#24b35e]/10 px-4 py-2 text-sm font-semibold text-[#176b3d]"
+            className="rounded-full border border-[#24b35e]/35 bg-[#24b35e]/10 px-5 py-2.5 text-xl font-bold text-[#176b3d] sm:text-2xl"
           >
             {item}
           </li>
