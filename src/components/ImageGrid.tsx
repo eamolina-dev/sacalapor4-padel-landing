@@ -15,7 +15,7 @@ export function ImageGrid({ images, altPrefix }: ImageGridProps) {
             src={image}
             alt={`${altPrefix} ${index + 1}`}
             loading="lazy"
-            className="h-36 w-full object-cover transition duration-500 group-hover:scale-110 sm:h-40 md:h-44"
+            className="h-auto w-full object-contain transition duration-500 group-hover:scale-105"
           />
         </figure>
       ))}

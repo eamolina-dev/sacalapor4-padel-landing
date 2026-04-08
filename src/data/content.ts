@@ -16,11 +16,10 @@ export const links = {
 
 export const navigationItems = [
   { label: "App de Reservas", href: links.appReservas, external: true },
-  { label: "Instagram", href: links.instagram, external: true },
-  { label: "Ubicación", href: routes.location, external: false },
   { label: "Instalaciones", href: "#instalaciones", external: false },
-  { label: "Eventos", href: "#eventos", external: false },
-  { label: "Sobre nosotros", href: "#nosotros", external: false },
+  { label: "Ubicación", href: routes.location, external: false },
+  { label: "Sobre Nosotros", href: "#nosotros", external: false },
+  { label: "Instagram", href: links.instagram, external: true },
 ] as const;
 
 export const facilityItems = [
@@ -31,9 +30,12 @@ export const facilityItems = [
   "Quincho para eventos sociales",
 ] as const;
 
-export const eventItems = [
-  "Torneos y Ligas",
-  "Cumples, bautismos, fiestas corporativas",
+export const sportsEventItems = ["Torneos", "Ligas", "Clases de pádel"] as const;
+
+export const socialEventItems = [
+  "Cumpleaños",
+  "Bautismos",
+  "Fiestas corporativas",
   "Turnos gratis por tu cumpleaños",
 ] as const;
 
@@ -41,7 +43,6 @@ export const aboutItems = [
   "Emprendimiento familiar",
   "Atención personalizada",
   "Sacala x 4: El corazón del pádel",
-  "Comunidad activa durante todo el año",
 ] as const;
 
 export const galleryPreviewImages = [
@@ -53,22 +54,28 @@ export const galleryPreviewImages = [
 
 export const sectionImages = {
   instalaciones: [
-    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.37.19 AM.webp",
-    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.47.21 AM.webp",
-    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.50.40 AM.webp",
-    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.55.27 AM.webp",
+    "/instalaciones/canchas-dia.webp",
+    "/instalaciones/canchas-y-gente-noche.webp",
+    "/instalaciones/canchas-y-gente-cerveza.webp",
+    "/instalaciones/asador.webp",
   ],
-  eventos: [
-    "/sacalapor4-images/WhatsApp Image 2026-03-24 at 4.09.03 PM.webp",
-    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.57.01 AM.webp",
-    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.58.34 AM.webp",
-    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.03.03 AM.webp",
+  eventosDeportivos: [
+    "/eventos-deportivos/chicos-ganadores.webp",
+    "/eventos-deportivos/gente-jugando.webp",
+    "/eventos-deportivos/chicas-jugando.webp",
+    "/eventos-deportivos/gente-jugando-6.webp",
+  ],
+  eventosSociales: [
+    "/eventos-sociales/gente-comiendo.webp",
+    "/eventos-sociales/gente-comiendo-2.webp",
+    "/eventos-sociales/pizarra-2.webp",
+    "/eventos-sociales/metegol.webp",
   ],
   nosotros: [
-    "/sacalapor4-images/mother-and-son-image.webp",
-    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.36.08 AM.webp",
-    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.39.26 AM.webp",
-    "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.14.08 AM.webp",
+    "/sobre-nosotros/duenia-atendiendo.webp",
+    "/sobre-nosotros/chicas-comiendo.webp",
+    "/sobre-nosotros/gente-jugando-2.webp",
+    "/sobre-nosotros/duenia-e-hijo.webp",
   ],
 } as const;
 

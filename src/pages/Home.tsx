@@ -5,10 +5,11 @@ import { SectionBlock } from "../components/SectionBlock";
 import {
   aboutItems,
   comments,
-  eventItems,
   facilityItems,
   links,
   sectionImages,
+  socialEventItems,
+  sportsEventItems,
 } from "../data/content";
 
 export function Home() {
@@ -16,20 +17,27 @@ export function Home() {
     <>
       <HeroSection />
 
-      <section className="bg-[#102a43] py-16 sm:py-20">
+      <section className="bg-[#2b4d68] py-16 sm:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-10 px-4 sm:gap-12">
           <SectionBlock
             id="instalaciones"
-            title="Instalaciones y Servicios"
+            title="Instalaciones y servicios"
             items={facilityItems}
             images={sectionImages.instalaciones}
           />
 
           <SectionBlock
-            id="eventos"
-            title="Eventos deportivos y sociales"
-            items={eventItems}
-            images={sectionImages.eventos}
+            id="eventos-deportivos"
+            title="Eventos deportivos"
+            items={sportsEventItems}
+            images={sectionImages.eventosDeportivos}
+          />
+
+          <SectionBlock
+            id="eventos-sociales"
+            title="Eventos sociales"
+            items={socialEventItems}
+            images={sectionImages.eventosSociales}
           />
 
           <SectionBlock
@@ -37,9 +45,7 @@ export function Home() {
             title="Sobre nosotros"
             items={aboutItems}
             images={sectionImages.nosotros}
-          >
-            <p>Emprendimiento familiar - Atención personalizada</p>
-          </SectionBlock>
+          />
 
           <section className="rounded-3xl bg-white p-6 shadow-xl shadow-slate-900/10 sm:p-8 md:p-10">
             <h2 className="text-2xl font-black text-slate-900 sm:text-3xl">Comentarios</h2>
