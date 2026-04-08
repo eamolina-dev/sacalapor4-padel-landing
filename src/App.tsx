@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useMemo, useState } from "react";
 
 const links = {
   appReservas: "https://alquilatucancha.com/sportclub/941",
@@ -29,6 +29,42 @@ const galleryImages = [
   "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.00.32 AM.webp",
 ];
 
+const fullGalleryImages = [
+  "/sacalapor4-images/horizontal-image.webp",
+  "/sacalapor4-images/horizontal-image-v2.webp",
+  "/sacalapor4-images/mother-and-son-image.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-24 at 4.09.03 PM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-24 at 4.09.03 PM (1).webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.32.42 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.33.09 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.34.13 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.34.53 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.36.08 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.37.19 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.38.04 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.39.26 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.40.23 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.47.21 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.48.29 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.48.54 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.49.50 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.50.40 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.51.16 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.51.43 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.52.07 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.52.30 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.54.50 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.55.27 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.56.06 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.57.01 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.58.34 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 8.59.21 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.00.32 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.02.34 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.03.03 AM.webp",
+  "/sacalapor4-images/WhatsApp Image 2026-03-25 at 9.14.08 AM.webp",
+];
+
 const comments = [
   "Excelente ambiente, canchas impecables y atención rápida por WhatsApp.",
   "Organizamos un cumpleaños y salió perfecto, súper recomendables.",
@@ -36,15 +72,31 @@ const comments = [
   "Se nota que es un emprendimiento familiar, siempre te reciben de diez.",
 ];
 
-function Navbar() {
+type PageType = "home" | "gallery" | "location";
+
+function getPage(pathname: string): PageType {
+  if (pathname === "/imagenes") {
+    return "gallery";
+  }
+  if (pathname === "/ubicacion") {
+    return "location";
+  }
+  return "home";
+}
+
+function Navbar({ compact = false }: { compact?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navLinkClass =
     "text-sm font-medium text-white/90 transition hover:text-white";
 
   return (
-    <header className="absolute inset-x-0 top-0 z-40">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:py-6">
-        <a href="#inicio" className="flex items-center gap-3">
+    <header
+      className={compact ? "sticky inset-x-0 top-0 z-40 bg-slate-950/95 backdrop-blur" : "absolute inset-x-0 top-0 z-40"}
+    >
+      <nav
+        className={`mx-auto flex max-w-6xl items-center justify-between px-4 ${compact ? "py-3 md:py-4" : "py-4 md:py-6"}`}
+      >
+        <a href="/" className="flex items-center gap-3">
           <img
             src="/sacalapor4-images/logo-image.jpeg"
             alt="Sacala x4 logo"
@@ -82,7 +134,7 @@ function Navbar() {
           >
             Turnos fijos
           </a>
-          <a href="#ubicacion" className={navLinkClass}>
+          <a href="/ubicacion" className={navLinkClass}>
             Ubicación
           </a>
           <a
@@ -123,7 +175,7 @@ function Navbar() {
             >
               Turnos fijos
             </a>
-            <a href="#ubicacion" className={navLinkClass}>
+            <a href="/ubicacion" className={navLinkClass}>
               Ubicación
             </a>
             <a
@@ -304,9 +356,7 @@ function MainLayout() {
                 ))}
               </div>
               <a
-                href={links.instagram}
-                target="_blank"
-                rel="noreferrer"
+                href="/imagenes"
                 className="inline-flex rounded-full bg-[#24b35e] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1e9b50]"
               >
                 Ver todas las imágenes
@@ -363,7 +413,97 @@ function MainLayout() {
   );
 }
 
+function GalleryPage() {
+  return (
+    <section className="bg-slate-100 pb-10 pt-24 md:pb-14 md:pt-28">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
+          <h1 className="text-2xl font-black text-slate-900 md:text-3xl">
+            Galería completa
+          </h1>
+          <p className="mt-2 text-sm text-slate-600 md:text-base">
+            Todas las imágenes disponibles del complejo Sacala x 4.
+          </p>
+        </div>
+
+        <div className="columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3">
+          {fullGalleryImages.map((image, index) => (
+            <figure
+              key={image}
+              className="break-inside-avoid overflow-hidden rounded-xl border border-slate-200 bg-white"
+            >
+              <img
+                src={image}
+                alt={`Imagen de Sacala x 4 ${index + 1}`}
+                className="h-auto w-full object-cover"
+                loading="lazy"
+              />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LocationPage() {
+  return (
+    <section className="bg-slate-100 pb-10 pt-24 md:pb-14 md:pt-28">
+      <div className="mx-auto max-w-5xl px-4">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 text-center md:p-8">
+          <h1 className="text-2xl font-black text-slate-900 md:text-3xl">
+            Ubicación
+          </h1>
+          <p className="mt-3 text-base text-slate-700">
+            Av. Pueyrredon 2660, Córdoba Capital
+          </p>
+          <a
+            href={links.maps}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 inline-flex rounded-full bg-[#24b35e] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1e9b50]"
+          >
+            Abrir en Google Maps
+          </a>
+        </div>
+
+        <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className="aspect-[16/10] w-full">
+            <iframe
+              title="Mapa centrado de Sacala x 4"
+              src="https://maps.google.com/maps?q=Av.%20Pueyrredon%202660%20Cordoba&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              className="h-full w-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function App() {
+  const page = useMemo(() => getPage(window.location.pathname), []);
+
+  if (page === "gallery") {
+    return (
+      <main className="min-h-screen bg-white text-slate-800">
+        <Navbar compact />
+        <GalleryPage />
+      </main>
+    );
+  }
+
+  if (page === "location") {
+    return (
+      <main className="min-h-screen bg-white text-slate-800">
+        <Navbar compact />
+        <LocationPage />
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-white text-slate-800">
       <Navbar />
