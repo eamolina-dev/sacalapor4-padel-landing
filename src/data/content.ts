@@ -47,7 +47,7 @@ export const aboutItems = [
   "Reinaguramos en 2024",
   "Emprendimiento familiar",
   "Atención personalizada",
-  "MIsión del club: ofrecer un lugar de encuentro para promover el deporte, la salud y la integración social, en un ambiente seguro y familiar",
+  "Misión del club: ofrecer un lugar de encuentro para promover el deporte, la salud y la integración social, en un ambiente seguro y familiar",
 ] as const;
 
 export const galleryPreviewImages = [
