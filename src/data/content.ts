@@ -47,6 +47,7 @@ export const aboutItems = [
   "Reinaguramos en 2024",
   "Emprendimiento familiar",
   "Atención personalizada",
+  "MIsión del club: ofrecer un lugar de encuentro para promover el deporte, la salud y la integración social, en un ambiente seguro y familiar",
 ] as const;
 
 export const galleryPreviewImages = [
@@ -131,10 +132,26 @@ export const fullGalleryImages = [
 ] as const;
 
 export const comments = [
-  "Excelente ambiente, canchas impecables y atención rápida por WhatsApp.",
-  "Organizamos un cumpleaños y salió perfecto, súper recomendables.",
-  "Muy bueno el patio cervecero para disfrutar después de jugar.",
-  "Se nota que es un emprendimiento familiar, siempre te reciben de diez.",
+  {
+    text: "Excelente ambiente, canchas impecables y atención rápida por WhatsApp.",
+    name: "Pablo Fernández",
+    date: "Julio 2025",
+  },
+  {
+    text: "Organizamos un cumpleaños y salió perfecto, súper recomendables.",
+    name: "Claudia López",
+    date: "Diciembre 2025",
+  },
+  {
+    text: "Muy bueno el patio cervecero para disfrutar después de jugar.",
+    name: "Jessica Quinteros",
+    date: "Enero 2026",
+  },
+  {
+    text: "Se nota que es un emprendimiento familiar, siempre te reciben de diez.",
+    name: "Mariano Muñoz",
+    date: "Marzo 2026",
+  },
 ] as const;
 
 export const mapEmbedLinks = {

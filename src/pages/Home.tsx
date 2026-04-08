@@ -57,8 +57,13 @@ export function Home() {
               COMENTARIOS
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              {comments.map((comment) => (
-                <ReviewCard key={comment} text={comment} />
+              {comments.map((comment, index) => (
+                <ReviewCard
+                  key={index}
+                  text={comment.text}
+                  name={comment.name}
+                  date={comment.date}
+                />
               ))}
             </div>
           </section>
