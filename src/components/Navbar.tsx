@@ -29,9 +29,6 @@ export function Navbar({ currentPage }: NavbarProps) {
             className="h-12 w-12 rounded-full border border-white/40 object-cover sm:h-14 sm:w-14"
             loading="eager"
           />
-          <span className="text-base font-bold tracking-wide text-white sm:text-lg">
-            Sacala x 4
-          </span>
         </a>
 
         <button
@@ -46,7 +43,8 @@ export function Navbar({ currentPage }: NavbarProps) {
 
         <div className="hidden items-center gap-6 md:flex">
           {resolvedItems.map((item) => {
-            const isActive = !item.external && item.href === routes[currentPage];
+            const isActive =
+              !item.external && item.href === routes[currentPage];
 
             return (
               <a
