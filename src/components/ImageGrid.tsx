@@ -5,17 +5,17 @@ type ImageGridProps = {
 
 export function ImageGrid({ images, altPrefix }: ImageGridProps) {
   return (
-    <div className="grid grid-cols-2 gap-4">
-      {images.slice(0, 4).map((image, index) => (
+    <div className="columns-1 gap-3 space-y-3 sm:columns-2 lg:columns-3">
+      {images.map((image, index) => (
         <figure
           key={`${image}-${index}`}
-          className="group overflow-hidden rounded-2xl border border-slate-200 bg-slate-100"
+          className="group mb-3 break-inside-avoid overflow-hidden rounded-xl border border-slate-200 bg-slate-100"
         >
           <img
             src={image}
             alt={`${altPrefix} ${index + 1}`}
             loading="lazy"
-            className="h-36 w-full object-cover transition duration-500 group-hover:scale-110 sm:h-40 md:h-44"
+            className="h-auto w-full transition duration-500 group-hover:scale-[1.02]"
           />
         </figure>
       ))}
