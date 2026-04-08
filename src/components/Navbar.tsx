@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent } from "react";
+import { useState } from "react";
 import { links, navigationItems, routes, type PageType } from "../data/content";
 
 type NavbarProps = {
@@ -7,6 +7,8 @@ type NavbarProps = {
 
 export function Navbar({ currentPage }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [eventsOpen, setEventsOpen] = useState(false);
+  const [mobileEventsOpen, setMobileEventsOpen] = useState(false);
 
   const navClass =
     "text-lg font-semibold text-white/90 transition duration-200 hover:text-white";
@@ -29,14 +31,6 @@ export function Navbar({ currentPage }: NavbarProps) {
       href: currentPage === "home" ? "#eventos-sociales" : "/#eventos-sociales",
     },
   ] as const;
-
-  const handleEventChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const destination = event.target.value;
-    if (destination) {
-      window.location.href = destination;
-      event.target.selectedIndex = 0;
-    }
-  };
 
   return (
     <header className="sticky inset-x-0 top-0 z-50 border-b border-white/15 bg-slate-950/75 backdrop-blur-md">
@@ -77,21 +71,31 @@ export function Navbar({ currentPage }: NavbarProps) {
             );
           })}
 
-          <select
-            defaultValue=""
-            onChange={handleEventChange}
-            className="rounded-xl border border-white/35 bg-slate-900/70 px-3 py-2 text-lg font-semibold text-white/90 outline-none transition hover:text-white"
-            aria-label="Eventos"
-          >
-            <option value="" disabled>
+          <div className="relative">
+            <button
+              type="button"
+              className={navClass}
+              onClick={() => setEventsOpen((prev) => !prev)}
+              aria-expanded={eventsOpen}
+              aria-haspopup="menu"
+            >
               Eventos
-            </option>
-            {eventOptions.map((option) => (
-              <option key={option.label} value={option.href}>
-                {option.label}
-              </option>
-            ))}
-          </select>
+            </button>
+            {eventsOpen && (
+              <div className="absolute left-1/2 top-full z-20 mt-2 w-44 -translate-x-1/2 rounded-2xl border border-white/20 bg-slate-900/95 p-2 shadow-xl">
+                {eventOptions.map((option) => (
+                  <a
+                    key={option.label}
+                    href={option.href}
+                    className="block rounded-xl px-3 py-2 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white"
+                    onClick={() => setEventsOpen(false)}
+                  >
+                    {option.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
 
           {resolvedItems.slice(2).map((item) => {
             const isActive = !item.external && item.href === routes[currentPage];
@@ -136,24 +140,34 @@ export function Navbar({ currentPage }: NavbarProps) {
               </a>
             ))}
 
-            <select
-              defaultValue=""
-              onChange={(event) => {
-                handleEventChange(event);
-                setMenuOpen(false);
-              }}
-              className="rounded-xl border border-white/35 bg-slate-900/70 px-3 py-2 text-lg font-semibold text-white/90 outline-none"
-              aria-label="Eventos"
-            >
-              <option value="" disabled>
+            <div>
+              <button
+                type="button"
+                className={navClass}
+                onClick={() => setMobileEventsOpen((prev) => !prev)}
+                aria-expanded={mobileEventsOpen}
+                aria-haspopup="menu"
+              >
                 Eventos
-              </option>
-              {eventOptions.map((option) => (
-                <option key={option.label} value={option.href}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+              </button>
+              {mobileEventsOpen && (
+                <div className="mt-2 flex flex-col gap-2 rounded-2xl border border-white/20 bg-slate-900/70 p-2">
+                  {eventOptions.map((option) => (
+                    <a
+                      key={option.label}
+                      href={option.href}
+                      className="rounded-xl px-3 py-2 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white"
+                      onClick={() => {
+                        setMobileEventsOpen(false);
+                        setMenuOpen(false);
+                      }}
+                    >
+                      {option.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {resolvedItems.slice(2).map((item) => (
               <a

@@ -17,7 +17,7 @@ export function Home() {
     <>
       <HeroSection />
 
-      <section className="bg-[#2b4d68] py-16 sm:py-20">
+      <section className="bg-[#3a5f7b] py-16 sm:py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-10 px-4 sm:gap-12">
           <SectionBlock
             id="instalaciones"

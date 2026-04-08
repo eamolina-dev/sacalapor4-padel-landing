@@ -56,19 +56,25 @@ export const sectionImages = {
   instalaciones: [
     "/instalaciones/canchas-dia.webp",
     "/instalaciones/canchas-y-gente-noche.webp",
+    "/instalaciones/canchas-y-gente-cerveza-2.webp",
+    "/instalaciones/gente-comiendo-5.webp",
     "/instalaciones/canchas-y-gente-cerveza.webp",
     "/instalaciones/asador.webp",
   ],
   eventosDeportivos: [
     "/eventos-deportivos/chicos-ganadores.webp",
     "/eventos-deportivos/gente-jugando.webp",
-    "/eventos-deportivos/chicas-jugando.webp",
+    "/eventos-deportivos/gente-jugando-5.webp",
     "/eventos-deportivos/gente-jugando-6.webp",
+    "/eventos-deportivos/chicas-jugando.webp",
+    "/eventos-deportivos/gente-jugando-3.webp",
   ],
   eventosSociales: [
+    "/eventos-sociales/chicos-jugando-2.webp",
     "/eventos-sociales/gente-comiendo.webp",
     "/eventos-sociales/gente-comiendo-2.webp",
     "/eventos-sociales/pizarra-2.webp",
+    "/eventos-sociales/mesa-de-ping-pong.webp",
     "/eventos-sociales/metegol.webp",
   ],
   nosotros: [
