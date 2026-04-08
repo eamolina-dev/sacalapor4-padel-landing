@@ -9,7 +9,13 @@ type SectionBlockProps = {
   children?: ReactNode;
 };
 
-export function SectionBlock({ id, title, items, images, children }: SectionBlockProps) {
+export function SectionBlock({
+  id,
+  title,
+  items,
+  images,
+  children,
+}: SectionBlockProps) {
   return (
     <section
       id={id}
@@ -20,7 +26,9 @@ export function SectionBlock({ id, title, items, images, children }: SectionBloc
         alt="Logo Sacala x4"
         className="absolute right-5 top-5 h-12 w-12 rounded-full border border-slate-200 object-cover shadow sm:h-14 sm:w-14"
       />
-      <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">{title}</h2>
+      <h2 className="text-3xl font-medium text-slate-900 sm:text-4xl">
+        {title}
+      </h2>
       <ul className="mt-6 flex flex-wrap gap-3">
         {items.map((item) => (
           <li
@@ -31,7 +39,9 @@ export function SectionBlock({ id, title, items, images, children }: SectionBloc
           </li>
         ))}
       </ul>
-      {children ? <div className="mt-6 text-base text-slate-700">{children}</div> : null}
+      {children ? (
+        <div className="mt-6 text-base text-slate-700">{children}</div>
+      ) : null}
       <div className="mt-7">
         <ImageGrid images={images} altPrefix={title} />
       </div>

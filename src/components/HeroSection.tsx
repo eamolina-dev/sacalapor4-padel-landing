@@ -20,7 +20,7 @@ export function HeroSection() {
         </h1>
 
         {/* DIRECCIÓN + TELÉFONO */}
-        <div className="absolute bottom-6 right-6 rounded-xl border border-white/20 bg-slate-900/70 px-4 py-3 text-right text-xs font-semibold tracking-wide text-white/90 sm:text-sm">
+        <div className="absolute bottom-6 right-6 rounded-xl bg-slate-900/50 px-4 py-3 text-right text-xs font-semibold tracking-wide text-white/90 sm:text-sm">
           <p>Av. Pueyrredón 2660 · Córdoba</p>
           <p>351 550 2961</p>
         </div>

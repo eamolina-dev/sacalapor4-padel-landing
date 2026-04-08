@@ -5,8 +5,12 @@ export function Location() {
     <section className="bg-[#102a43] pb-16 pt-14 md:pb-20 md:pt-16">
       <div className="mx-auto max-w-6xl px-4">
         <div className="rounded-3xl bg-white p-6 text-center shadow-xl shadow-slate-900/10 md:p-10">
-          <h1 className="text-3xl font-black text-slate-900 md:text-4xl">Ubicación</h1>
-          <p className="mt-4 text-lg text-slate-700">Av. Pueyrredon 2660, Córdoba Capital</p>
+          <h1 className="text-3xl font-black text-slate-900 md:text-4xl">
+            Ubicación
+          </h1>
+          <p className="mt-4 text-lg text-slate-700">
+            Av. Pueyrredón 2660, Córdoba Capital
+          </p>
           <a
             href={links.maps}
             target="_blank"
