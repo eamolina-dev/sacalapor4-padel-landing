@@ -5,14 +5,14 @@ type ImageGridProps = {
 
 export function ImageGrid({ images, altPrefix }: ImageGridProps) {
   return (
-    <div className="honeycomb-grid">
+    <div className="masonry-gallery">
       {images.map((image, index) => (
-        <figure key={`${image}-${index}`} className="honeycomb-cell group">
+        <figure key={`${image}-${index}`} className="masonry-item group">
           <img
             src={image}
             alt={`${altPrefix} ${index + 1}`}
             loading="lazy"
-            className="honeycomb-image"
+            className="masonry-image"
           />
         </figure>
       ))}
