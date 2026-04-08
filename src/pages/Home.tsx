@@ -21,34 +21,36 @@ export function Home() {
         <div className="mx-auto flex max-w-7xl flex-col gap-10 px-4 sm:gap-12">
           <SectionBlock
             id="instalaciones"
-            title="Instalaciones y servicios"
+            title="INSTALACIONES Y SERVICIOS"
             items={facilityItems}
             images={sectionImages.instalaciones}
           />
 
           <SectionBlock
             id="eventos-deportivos"
-            title="Eventos deportivos"
+            title="EVENTOS DEPORTIVOS"
             items={sportsEventItems}
             images={sectionImages.eventosDeportivos}
           />
 
           <SectionBlock
             id="eventos-sociales"
-            title="Eventos sociales"
+            title="EVENTOS SOCIALES"
             items={socialEventItems}
             images={sectionImages.eventosSociales}
           />
 
           <SectionBlock
             id="nosotros"
-            title="Sobre nosotros"
+            title="SOBRE NOSOTROS"
             items={aboutItems}
             images={sectionImages.nosotros}
           />
 
           <section className="rounded-3xl bg-white p-6 shadow-xl shadow-slate-900/10 sm:p-8 md:p-10">
-            <h2 className="text-2xl font-black text-slate-900 sm:text-3xl">Comentarios</h2>
+            <h2 className="text-2xl font-black text-slate-900 sm:text-3xl">
+              COMENTARIOS
+            </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               {comments.map((comment) => (
                 <ReviewCard key={comment} text={comment} />
@@ -59,10 +61,12 @@ export function Home() {
           <ContactCard />
 
           <div className="rounded-3xl border border-white/20 bg-white/10 p-6 text-white backdrop-blur-sm sm:p-8">
-            <h3 className="text-xl font-bold">Sacala x 4: El corazón del pádel</h3>
+            <h3 className="text-xl font-bold">
+              Sacala x 4: El corazón del pádel
+            </h3>
             <p className="mt-2 text-white/90">
-              Reservá fácil desde nuestra App de Reservas o escribinos por WhatsApp para
-              coordinar turnos y eventos.
+              Reservá fácil desde nuestra App de Reservas o escribinos por
+              WhatsApp para coordinar turnos y eventos.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <a
@@ -71,7 +75,7 @@ export function Home() {
                 rel="noreferrer"
                 className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-white px-5 py-2.5 text-sm font-bold text-slate-900"
               >
-                App de Reservas
+                Reservá online
               </a>
               <a
                 href={links.whatsapp}

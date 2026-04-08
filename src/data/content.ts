@@ -15,11 +15,11 @@ export const links = {
 } as const;
 
 export const navigationItems = [
-  { label: "App de Reservas", href: links.appReservas, external: true },
+  { label: "Sobre Nosotros", href: "#nosotros", external: false },
   { label: "Instalaciones", href: "#instalaciones", external: false },
   { label: "Ubicación", href: routes.location, external: false },
-  { label: "Sobre Nosotros", href: "#nosotros", external: false },
   { label: "Instagram", href: links.instagram, external: true },
+  { label: "Reservá online", href: links.appReservas, external: true },
 ] as const;
 
 export const facilityItems = [
@@ -28,9 +28,13 @@ export const facilityItems = [
   "Asador",
   "Estacionamiento gratuito",
   "Quincho para eventos sociales",
+  "Metegol",
+  "Ping Pong",
+  "Sonido",
+  "TV",
 ] as const;
 
-export const sportsEventItems = ["Torneos", "Ligas", "Clases de pádel"] as const;
+export const sportsEventItems = ["Torneos", "Ligas", "Clases de pádel", "Sociales para principiantes"] as const;
 
 export const socialEventItems = [
   "Cumpleaños",
@@ -40,9 +44,9 @@ export const socialEventItems = [
 ] as const;
 
 export const aboutItems = [
+  "Reinaguramos en 2024",
   "Emprendimiento familiar",
   "Atención personalizada",
-  "Sacala x 4: El corazón del pádel",
 ] as const;
 
 export const galleryPreviewImages = [
@@ -54,28 +58,35 @@ export const galleryPreviewImages = [
 
 export const sectionImages = {
   instalaciones: [
-    "/instalaciones/canchas-dia.webp",
-    "/instalaciones/canchas-y-gente-noche.webp",
+    "/instalaciones/asador.webp",
     "/instalaciones/canchas-y-gente-cerveza-2.webp",
     "/instalaciones/gente-comiendo-5.webp",
-    "/instalaciones/canchas-y-gente-cerveza.webp",
-    "/instalaciones/asador.webp",
+    "/instalaciones/pizzarra.webp",
+    "/instalaciones/gente-comiendo-4.webp",
+    "/instalaciones/canchas-dia.webp",
+    "/instalaciones/canchas-y-gente-noche.webp",
+    // "/instalaciones/canchas-y-gente-cerveza.webp",
   ],
   eventosDeportivos: [
     "/eventos-deportivos/chicos-ganadores.webp",
-    "/eventos-deportivos/gente-jugando.webp",
+    // "/eventos-deportivos/gente-jugando.webp",
+    "/eventos-deportivos/torneo-1.webp",
     "/eventos-deportivos/gente-jugando-5.webp",
+    "/eventos-deportivos/torneo-2.webp",
     "/eventos-deportivos/gente-jugando-6.webp",
-    "/eventos-deportivos/chicas-jugando.webp",
     "/eventos-deportivos/gente-jugando-3.webp",
+    "/eventos-deportivos/torneo-3.webp",
+    "/eventos-deportivos/chicas-jugando.webp",
+
   ],
   eventosSociales: [
+    "/eventos-sociales/metegol.webp",
     "/eventos-sociales/chicos-jugando-2.webp",
     "/eventos-sociales/gente-comiendo.webp",
+    "/eventos-sociales/mesa-de-ping-pong.webp",
+    "/eventos-sociales/bebida.webp",
     "/eventos-sociales/gente-comiendo-2.webp",
     "/eventos-sociales/pizarra-2.webp",
-    "/eventos-sociales/mesa-de-ping-pong.webp",
-    "/eventos-sociales/metegol.webp",
   ],
   nosotros: [
     "/sobre-nosotros/duenia-atendiendo.webp",
@@ -122,7 +133,7 @@ export const fullGalleryImages = [
 export const comments = [
   "Excelente ambiente, canchas impecables y atención rápida por WhatsApp.",
   "Organizamos un cumpleaños y salió perfecto, súper recomendables.",
-  "Muy cómodo el estacionamiento y el patio cervecero después de jugar.",
+  "Muy bueno el patio cervecero para disfrutar después de jugar.",
   "Se nota que es un emprendimiento familiar, siempre te reciben de diez.",
 ] as const;
 
