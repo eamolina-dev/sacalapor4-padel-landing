@@ -124,6 +124,13 @@ export function Navbar({ currentPage }: NavbarProps) {
         </div>
       </nav>
 
+      <div className="mx-auto flex w-full max-w-7xl justify-end px-4 pb-3">
+        <div className="rounded-xl border border-white/20 bg-slate-900/60 px-3 py-2 text-right text-xs font-semibold tracking-wide text-white/90 sm:text-sm">
+          <p>Av. Pueyrredón 2660 · Córdoba</p>
+          <p>351 550 2961</p>
+        </div>
+      </div>
+
       {menuOpen && (
         <div className="mx-4 mb-3 rounded-2xl border border-white/20 bg-slate-900/95 p-4 text-white min-[1100px]:hidden">
           <div className="flex flex-col gap-3">

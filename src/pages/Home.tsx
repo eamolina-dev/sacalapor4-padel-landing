@@ -47,8 +47,13 @@ export function Home() {
             images={sectionImages.nosotros}
           />
 
-          <section className="rounded-3xl bg-white p-6 shadow-xl shadow-slate-900/10 sm:p-8 md:p-10">
-            <h2 className="text-2xl font-black text-slate-900 sm:text-3xl">
+          <section className="relative rounded-3xl bg-white p-6 shadow-xl shadow-slate-900/10 sm:p-8 md:p-10">
+            <img
+              src="/sacalapor4-images/logo-image.jpeg"
+              alt="Logo Sacala x4"
+              className="absolute right-5 top-5 h-12 w-12 rounded-full border border-slate-200 object-cover shadow sm:h-14 sm:w-14"
+            />
+            <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">
               COMENTARIOS
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -60,11 +65,16 @@ export function Home() {
 
           <ContactCard />
 
-          <div className="rounded-3xl border border-white/20 bg-white/10 p-6 text-white backdrop-blur-sm sm:p-8">
-            <h3 className="text-xl font-bold">
+          <div className="relative rounded-3xl border border-white/20 bg-white/10 p-6 text-white backdrop-blur-sm sm:p-8">
+            <img
+              src="/sacalapor4-images/logo-image.jpeg"
+              alt="Logo Sacala x4"
+              className="absolute right-5 top-5 h-12 w-12 rounded-full border border-white/40 object-cover shadow sm:h-14 sm:w-14"
+            />
+            <h3 className="text-3xl font-black sm:text-4xl">
               Sacala x 4: El corazón del pádel
             </h3>
-            <p className="mt-2 text-white/90">
+            <p className="mt-2 text-lg text-white/90 sm:text-xl">
               Reservá fácil desde nuestra App de Reservas o escribinos por
               WhatsApp para coordinar turnos y eventos.
             </p>
@@ -73,7 +83,7 @@ export function Home() {
                 href={links.appReservas}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-white px-5 py-2.5 text-sm font-bold text-slate-900"
+                className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-white px-5 py-2.5 text-base font-bold text-slate-900"
               >
                 Reservá online
               </a>
@@ -81,7 +91,7 @@ export function Home() {
                 href={links.whatsapp}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-white/70 px-5 py-2.5 text-sm font-bold text-white"
+                className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-white/70 px-5 py-2.5 text-base font-bold text-white"
               >
                 WhatsApp
               </a>
