@@ -43,8 +43,6 @@ export const galleryPreviewImages = [
 ] as const;
 
 export const fullGalleryImages = [
-  "/sacalapor4-images/horizontal-image.webp",
-  "/sacalapor4-images/horizontal-image-v2.webp",
   "/sacalapor4-images/mother-and-son-image.webp",
   "/sacalapor4-images/WhatsApp Image 2026-03-24 at 4.09.03 PM.webp",
   "/sacalapor4-images/WhatsApp Image 2026-03-24 at 4.09.03 PM (1).webp",
