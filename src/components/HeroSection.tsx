@@ -10,12 +10,17 @@ export function HeroSection() {
         className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
         loading="eager"
       />
+
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-[#102a43]/80" />
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center px-4 py-16 text-center sm:py-24">
-        <h1 className="text-3xl font-black text-white sm:text-5xl">
+
+      <div className="relative mx-auto mb-16 flex w-full max-w-7xl flex-col items-center px-4 py-16 text-center sm:py-24">
+        {/* TÍTULO */}
+        <h1 className="text-4xl font-black text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] sm:text-6xl md:text-7xl">
           Sacalax4: El corazón del padel
         </h1>
-        <div className="mt-6 self-end rounded-xl border border-white/20 bg-slate-900/60 px-3 py-2 text-right text-xs font-semibold tracking-wide text-white/90 sm:text-sm">
+
+        {/* DIRECCIÓN + TELÉFONO */}
+        <div className="absolute bottom-6 right-6 rounded-xl border border-white/20 bg-slate-900/70 px-4 py-3 text-right text-xs font-semibold tracking-wide text-white/90 sm:text-sm">
           <p>Av. Pueyrredón 2660 · Córdoba</p>
           <p>351 550 2961</p>
         </div>
