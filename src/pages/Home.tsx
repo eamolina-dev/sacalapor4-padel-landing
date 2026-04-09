@@ -77,7 +77,7 @@ export function Home() {
               className="absolute right-5 top-5 h-12 w-12 rounded-full border border-white/40 object-cover shadow sm:h-14 sm:w-14"
             />
             <h3 className="text-3xl font-black sm:text-4xl">
-              Sacala x 4: El corazón del pádel
+              Sacalax4: El corazón del padel
             </h3>
             <p className="mt-2 text-lg text-white/90 sm:text-xl">
               Reservá fácil desde nuestra App de Reservas o escribinos por

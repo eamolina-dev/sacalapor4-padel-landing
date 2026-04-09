@@ -24,6 +24,7 @@ export const navigationItems = [
 
 export const facilityItems = [
   "4 canchas outdoor",
+  "Alquiler de paletas",
   "Patio cervecero",
   "Asador",
   "Estacionamiento gratuito",
@@ -34,7 +35,7 @@ export const facilityItems = [
   "TV",
 ] as const;
 
-export const sportsEventItems = ["Torneos relámpagos", "Ligas femeninas, masculinas y mixtas", "Clases de entrenamiento", "Sociales para principiantes"] as const;
+export const sportsEventItems = ["Torneos relámpagos", "Ligas femeninas, masculinas y mixtas", "Turnos fijos", "Clases de entrenamiento", "Sociales para principiantes"] as const;
 
 export const socialEventItems = [
   "Cumples de adultos e infantiles",
@@ -60,32 +61,33 @@ export const sectionImages = {
   instalaciones: [
     "/instalaciones/asador.webp",
     "/instalaciones/canchas-y-gente-cerveza-2.webp",
-    "/instalaciones/gente-comiendo-5.webp",
     "/instalaciones/pizzarra.webp",
+    "/instalaciones/canchas-y-gente-noche.webp",
     "/instalaciones/gente-comiendo-4.webp",
     "/instalaciones/canchas-dia.webp",
-    "/instalaciones/canchas-y-gente-noche.webp",
-    // "/instalaciones/canchas-y-gente-cerveza.webp",
+    "/instalaciones/gente-comiendo-5.webp",
   ],
   eventosDeportivos: [
+    "/eventos-deportivos/gente-jugando-4.webp",
     "/eventos-deportivos/chicos-ganadores.webp",
-    // "/eventos-deportivos/gente-jugando.webp",
-    "/eventos-deportivos/torneo-1.webp",
-    "/eventos-deportivos/gente-jugando-5.webp",
-    "/eventos-deportivos/torneo-2.webp",
-    "/eventos-deportivos/gente-jugando-6.webp",
-    "/eventos-deportivos/gente-jugando-3.webp",
     "/eventos-deportivos/torneo-3.webp",
     "/eventos-deportivos/chicas-jugando.webp",
+    // "/eventos-deportivos/gente-jugando-7.webp",
+    "/eventos-deportivos/gente-jugando-6.webp",
+    "/eventos-deportivos/gente-jugando-3.webp",
+    "/eventos-deportivos/torneo-1.webp",
+    "/eventos-deportivos/gente-jugando-5.webp",
 
+    // "/eventos-deportivos/gente-jugando.webp",
+    // "/eventos-deportivos/chicas-jugando.webp",
   ],
   eventosSociales: [
     "/eventos-sociales/metegol.webp",
-    "/eventos-sociales/chicos-jugando-2.webp",
     "/eventos-sociales/gente-comiendo.webp",
+    "/eventos-sociales/chicos-jugando-2.webp",
     "/eventos-sociales/mesa-de-ping-pong.webp",
-    "/eventos-sociales/bebida.webp",
     "/eventos-sociales/gente-comiendo-2.webp",
+    "/eventos-sociales/bebida.webp",
     "/eventos-sociales/pizarra-2.webp",
   ],
   nosotros: [
