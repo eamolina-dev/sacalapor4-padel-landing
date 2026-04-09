@@ -13,7 +13,7 @@ export function Navbar({ currentPage }: NavbarProps) {
   const desktopNavClass =
     "text-xl font-bold tracking-wide text-white/90 transition duration-200 hover:text-white xl:text-2xl";
   const mobileNavClass =
-    "block w-full rounded-xl px-3 py-3 text-lg font-semibold tracking-wide text-white/90 transition duration-200 hover:bg-white/10 hover:text-white";
+    "block w-full rounded-xl px-3 py-3 text-left text-lg font-semibold tracking-wide text-white/90 transition duration-200 hover:bg-white/10 hover:text-white";
 
   const resolvedItems = navigationItems.map((item) => {
     if (currentPage !== "home" && item.href.startsWith("#")) {
@@ -26,7 +26,8 @@ export function Navbar({ currentPage }: NavbarProps) {
   const eventOptions = [
     {
       label: "Deportivos",
-      href: currentPage === "home" ? "#eventos-deportivos" : "/#eventos-deportivos",
+      href:
+        currentPage === "home" ? "#eventos-deportivos" : "/#eventos-deportivos",
     },
     {
       label: "Sociales",
@@ -58,7 +59,8 @@ export function Navbar({ currentPage }: NavbarProps) {
 
         <div className="hidden flex-1 items-center justify-evenly gap-6 text-center min-[1100px]:flex">
           {resolvedItems.slice(0, 2).map((item) => {
-            const isActive = !item.external && item.href === routes[currentPage];
+            const isActive =
+              !item.external && item.href === routes[currentPage];
 
             return (
               <a
@@ -100,7 +102,8 @@ export function Navbar({ currentPage }: NavbarProps) {
           </div>
 
           {resolvedItems.slice(2).map((item) => {
-            const isActive = !item.external && item.href === routes[currentPage];
+            const isActive =
+              !item.external && item.href === routes[currentPage];
 
             return (
               <a
