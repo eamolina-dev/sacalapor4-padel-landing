@@ -46,8 +46,8 @@ export const socialEventItems = [
 ] as const;
 
 export const aboutItems = [
-  "Reinaguramos en 2024 con 4 canchas nuevas, somos un emprendimiento familiar que buscamos brindar un trato personalizado, un espacio cómodo para jugar, entrenar y divertirse. Consultá para festejar tu evento en nuestro club.",
   "Nos enfocamos en ofrecer un lugar de encuentro para promover el deporte, la salud y la integración social, en un ambiente seguro y familiar.",
+  "Reinaguramos en 2024 con 4 canchas nuevas, somos un emprendimiento familiar que buscamos brindar un trato personalizado, un espacio cómodo para jugar, entrenar y divertirse. Consultá para festejar tu evento en nuestro club.",
 ] as const;
 
 export const galleryPreviewImages = [
