@@ -1,4 +1,5 @@
 import { ContactCard } from "../components/ContactCard";
+import { Footer } from "../components/Footer";
 import { HeroSection } from "../components/HeroSection";
 import { ReviewCard } from "../components/ReviewCard";
 import { SectionBlock } from "../components/SectionBlock";
@@ -108,6 +109,8 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </>
   );
 }
