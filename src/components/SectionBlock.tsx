@@ -21,19 +21,21 @@ export function SectionBlock({
       id={id}
       className="relative scroll-mt-28 rounded-3xl bg-white p-6 shadow-xl shadow-slate-900/10 sm:p-8 md:p-10"
     >
-      <img
-        src="/sacalapor4-images/logo-image.jpeg"
-        alt="Logo Sacala x4"
-        className="absolute right-5 top-5 h-12 w-12 rounded-full border border-slate-200 object-cover shadow sm:h-14 sm:w-14"
-      />
-      <h2 className="text-3xl font-medium text-slate-900 sm:text-4xl">
-        {title}
-      </h2>
+      <div className="flex items-start justify-between gap-4">
+        <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+          {title}
+        </h2>
+        <img
+          src="/sacalapor4-images/logo-image.jpeg"
+          alt="Logo Sacala x4"
+          className="h-11 w-11 shrink-0 rounded-full border border-slate-200 object-cover shadow sm:h-14 sm:w-14"
+        />
+      </div>
       <ul className="mt-6 flex flex-wrap gap-3">
         {items.map((item) => (
           <li
             key={item}
-            className="rounded-full border border-[#24b35e]/35 bg-[#24b35e]/10 px-5 py-2.5 text-lg font-bold text-[#176b3d] sm:text-xl"
+            className="max-w-full break-words whitespace-normal rounded-2xl border border-[#24b35e]/35 bg-[#24b35e]/10 px-4 py-2 text-sm font-semibold leading-relaxed text-[#176b3d] sm:text-base"
           >
             {item}
           </li>

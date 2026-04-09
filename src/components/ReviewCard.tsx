@@ -8,7 +8,7 @@ export function ReviewCard({ text, name, date }: ReviewCardProps) {
   return (
     <article className="flex h-full flex-col justify-between rounded-2xl bg-white p-6 shadow-lg shadow-slate-900/10 transition duration-300 hover:-translate-y-1">
       {/* TEXTO */}
-      <p className="text-lg leading-relaxed text-slate-700 sm:text-xl">
+      <p className="text-base leading-relaxed text-slate-700 sm:text-lg">
         “{text}”
       </p>
 

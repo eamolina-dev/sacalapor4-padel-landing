@@ -48,14 +48,16 @@ export function Home() {
           />
 
           <section className="relative rounded-3xl bg-white p-6 shadow-xl shadow-slate-900/10 sm:p-8 md:p-10">
-            <img
-              src="/sacalapor4-images/logo-image.jpeg"
-              alt="Logo Sacala x4"
-              className="absolute right-5 top-5 h-12 w-12 rounded-full border border-slate-200 object-cover shadow sm:h-14 sm:w-14"
-            />
-            <h2 className="text-3xl font-black text-slate-900 sm:text-4xl">
-              COMENTARIOS
-            </h2>
+            <div className="flex items-start justify-between gap-4">
+              <h2 className="text-2xl font-black text-slate-900 sm:text-3xl md:text-4xl">
+                COMENTARIOS
+              </h2>
+              <img
+                src="/sacalapor4-images/logo-image.jpeg"
+                alt="Logo Sacala x4"
+                className="h-11 w-11 shrink-0 rounded-full border border-slate-200 object-cover shadow sm:h-14 sm:w-14"
+              />
+            </div>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               {comments.map((comment, index) => (
                 <ReviewCard
@@ -71,15 +73,17 @@ export function Home() {
           <ContactCard />
 
           <div className="relative rounded-3xl border border-white/20 bg-white/10 p-6 text-white backdrop-blur-sm sm:p-8">
-            <img
-              src="/sacalapor4-images/logo-image.jpeg"
-              alt="Logo Sacala x4"
-              className="absolute right-5 top-5 h-12 w-12 rounded-full border border-white/40 object-cover shadow sm:h-14 sm:w-14"
-            />
-            <h3 className="text-3xl font-black sm:text-4xl">
-              Sacalax4: El corazón del padel
-            </h3>
-            <p className="mt-2 text-lg text-white/90 sm:text-xl">
+            <div className="flex items-start justify-between gap-4">
+              <h3 className="text-2xl font-black sm:text-3xl md:text-4xl">
+                Sacalax4: El corazón del padel
+              </h3>
+              <img
+                src="/sacalapor4-images/logo-image.jpeg"
+                alt="Logo Sacala x4"
+                className="h-11 w-11 shrink-0 rounded-full border border-white/40 object-cover shadow sm:h-14 sm:w-14"
+              />
+            </div>
+            <p className="mt-2 text-base text-white/90 sm:text-lg">
               Reservá fácil desde nuestra App de Reservas o escribinos por
               WhatsApp para coordinar turnos y eventos.
             </p>

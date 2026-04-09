@@ -1,5 +1,16 @@
 import { fullGalleryImages } from "../data/content";
 
+const featuredTileClasses = [
+  "md:col-span-3 md:row-span-3",
+  "md:col-span-3 md:row-span-2",
+  "md:col-span-2 md:row-span-2",
+  "md:col-span-2 md:row-span-3",
+  "md:col-span-2 md:row-span-2",
+  "md:col-span-3 md:row-span-2",
+  "md:col-span-3 md:row-span-3",
+  "md:col-span-2 md:row-span-2",
+] as const;
+
 export function Gallery() {
   return (
     <section className="bg-[#102a43] pb-16 pt-14 md:pb-20 md:pt-16">
@@ -11,16 +22,18 @@ export function Gallery() {
           </p>
         </header>
 
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:auto-rows-[120px] md:grid-cols-6">
           {fullGalleryImages.map((image, index) => (
             <figure
               key={image}
-              className="group overflow-hidden rounded-2xl border border-white/20 bg-white/10"
+              className={`group overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-1 ${
+                featuredTileClasses[index % featuredTileClasses.length]
+              }`}
             >
               <img
                 src={image}
                 alt={`Imagen de Sacala x 4 ${index + 1}`}
-                className="h-40 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-48"
+                className="h-full w-full rounded-xl object-contain transition duration-500 group-hover:scale-[1.02]"
                 loading="lazy"
               />
             </figure>

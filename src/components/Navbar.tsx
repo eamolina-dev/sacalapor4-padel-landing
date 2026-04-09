@@ -10,8 +10,10 @@ export function Navbar({ currentPage }: NavbarProps) {
   const [eventsOpen, setEventsOpen] = useState(false);
   const [mobileEventsOpen, setMobileEventsOpen] = useState(false);
 
-  const navClass =
-    "text-2xl font-bold tracking-wide text-white/90 transition duration-200 hover:text-white";
+  const desktopNavClass =
+    "text-xl font-bold tracking-wide text-white/90 transition duration-200 hover:text-white xl:text-2xl";
+  const mobileNavClass =
+    "block w-full rounded-xl px-3 py-3 text-lg font-semibold tracking-wide text-white/90 transition duration-200 hover:bg-white/10 hover:text-white";
 
   const resolvedItems = navigationItems.map((item) => {
     if (currentPage !== "home" && item.href.startsWith("#")) {
@@ -64,7 +66,7 @@ export function Navbar({ currentPage }: NavbarProps) {
                 href={item.href}
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noreferrer" : undefined}
-                className={`${navClass} ${isActive ? "text-white" : ""}`}
+                className={`${desktopNavClass} ${isActive ? "text-white" : ""}`}
               >
                 {item.label}
               </a>
@@ -74,7 +76,7 @@ export function Navbar({ currentPage }: NavbarProps) {
           <div className="relative">
             <button
               type="button"
-              className={navClass}
+              className={desktopNavClass}
               onClick={() => setEventsOpen((prev) => !prev)}
               aria-expanded={eventsOpen}
               aria-haspopup="menu"
@@ -106,7 +108,7 @@ export function Navbar({ currentPage }: NavbarProps) {
                 href={item.href}
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noreferrer" : undefined}
-                className={`${navClass} ${isActive ? "text-white" : ""}`}
+                className={`${desktopNavClass} ${isActive ? "text-white" : ""}`}
               >
                 {item.label}
               </a>
@@ -133,7 +135,7 @@ export function Navbar({ currentPage }: NavbarProps) {
                 href={item.href}
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noreferrer" : undefined}
-                className={navClass}
+                className={mobileNavClass}
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}
@@ -143,7 +145,7 @@ export function Navbar({ currentPage }: NavbarProps) {
             <div>
               <button
                 type="button"
-                className={navClass}
+                className={mobileNavClass}
                 onClick={() => setMobileEventsOpen((prev) => !prev)}
                 aria-expanded={mobileEventsOpen}
                 aria-haspopup="menu"
@@ -156,7 +158,7 @@ export function Navbar({ currentPage }: NavbarProps) {
                     <a
                       key={option.label}
                       href={option.href}
-                      className="rounded-xl px-3 py-2 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white"
+                      className="rounded-xl px-3 py-3 text-base font-semibold text-white/90 transition hover:bg-white/10 hover:text-white"
                       onClick={() => {
                         setMobileEventsOpen(false);
                         setMenuOpen(false);
@@ -175,7 +177,7 @@ export function Navbar({ currentPage }: NavbarProps) {
                 href={item.href}
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noreferrer" : undefined}
-                className={navClass}
+                className={mobileNavClass}
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}
