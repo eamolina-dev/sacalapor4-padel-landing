@@ -84,7 +84,7 @@ export const sectionImages = {
   eventosSociales: [
     "/eventos-sociales/metegol.webp",
     "/eventos-sociales/gente-comiendo.webp",
-    "/eventos-sociales/chicos-jugando-2.webp",
+    "/eventos-sociales/chicos-jugando-new.webp",
     "/eventos-sociales/mesa-de-ping-pong.webp",
     "/eventos-sociales/gente-comiendo-2.webp",
     "/eventos-sociales/bebida.webp",
